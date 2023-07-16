@@ -1,0 +1,74 @@
+<app-side-bar>
+    <div id="id01" [ngClass]="{'modal':true,'modal-show':showDetalles}">
+        <div style="width: 50%;">
+            <span (click)="closeDetalles()" class="close" title="Close Modal">×</span>
+        </div>
+        <div class="modal-content">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Descripcion</th>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Imagen</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let detalles of pedido?.detallesPedido let i = index;">
+                            <th scope="row">{{i}}</th>
+                            <td>{{detalles.producto.nombre}}</td>
+                            <td>{{detalles.producto.descripcion}}</td>
+                            <td>{{detalles.cantidad}}</td>
+                            <td><img src="{{detalles.producto.img}}" alt="img" style="width: 100px;"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <h1 class="mb-3">Control de Pedidos</h1>
+    <div class="card-table">
+        <div class="d-flex justify-content-between mb-3">
+            <h3>Pedidos solicitados</h3>
+            <input type="search" id="form1" class="search-input" placeholder="Buscar pedidos"/>
+        </div>
+        <!-- TABLA PEDIDOS  -->
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#Codigo</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Monto</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Tipo Entrega</th>
+                        <th scope="col">Metodo pago</th>
+                        <th scope="col">Accion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let pedido of pedidos$ | async; let i = index;">
+                        <th scope="row">{{pedido.idpedido}}</th>
+                        <td>{{pedido.fecha.substring(0,10)}}</td>
+                        <td>{{pedido.monto_total}}</td>
+                        <td>{{pedido.estado}}</td>
+                        <td>{{pedido.tipo_entrega}}</td>
+                        <td>{{pedido.metodo_pago}}</td>
+                        <td>
+                            <div class="action">
+                                <a (click)="showDetallesPedido(pedido)">Ver detalles</a>
+                                <a (click)="orderReady(pedido.idpedido,pedido)">Pedido listo</a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    </div>
+</app-side-bar>
+

@@ -1,0 +1,45 @@
+<app-side-bar>
+    <div class="container">
+        <h1 class="mb-3">Control de Inventario</h1>
+    <button class="btn btn-primary my-4" >Registrar producto</button>
+    <div class="card-table">
+        <div class="d-flex justify-content-between mb-3">
+            <h3>Productos Registrados</h3>
+            <input type="search" id="form1" class="search-input" placeholder="Buscar producto"/>
+        </div>
+        <!-- TABLA PRODUCTOS -->
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Producto</th>
+                        <th scope="col">Descripcion</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Descuento</th>
+                        <th scope="col">Stock</th>
+                        <th scope="col">Imagen</th>
+                        <th scope="col">idProducto</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let producto of productos$ | async; let i = index;">
+                        <th scope="row">{{i}}</th>
+                        <td>{{producto.nombre}}</td>
+                        <td>{{producto.descripcion}}</td>
+                        <td>{{producto.precio}}</td>
+                        <td>{{producto.descuento}}</td>
+                        <td>{{producto.stock}}</td>
+                        <td><img src="{{producto.img}}" alt="imagen" style="width: 100px;"></td>
+                        <td>{{producto.idProducto}}</td>
+                        <td><a style="cursor:pointer;color:blue;">Editar</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    </div>
+</app-side-bar>
+

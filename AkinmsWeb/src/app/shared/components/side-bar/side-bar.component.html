@@ -1,0 +1,32 @@
+<div class=" flex-nowrap all-page" style="height: 100vh;">
+    <div class="bg-light p-4 side-bar ">
+        <div class="side-bar-logo d-flex align-items-center">
+            <img src="../../../../assets/images/logo-red.png" alt="">
+            <h1>AKI NMS</h1>
+            <i class="uil uil-bars icon-menu-mobile" (click)="openCloseMenu()"></i>
+        </div>
+        <div class="side-bar-links" #side_bar_links>
+            <ul>
+                <li><a href="/inicio">Inicio</a></li>
+                <li><a href="/control-inventario">Control de Inventario</a></li>
+                <li><a href="/control-pedidos">Control de pedidos</a></li>
+                <li><a href="/reporte-ventas">Reporte de ventas</a></li>
+            </ul>
+            <ul>
+                <h3>Account</h3>
+                <li><a href="#">Settings</a></li>
+                <li><a href="#">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="w-100">
+        <div class="top-bar bg-light justify-content-between p-5 mb-5">
+            <h1 class="text-primary">Bodega: Tu Vecino</h1>
+            <div class="perfil">
+                Perfil
+            </div>
+        </div>
+        <ng-content></ng-content>
+
+    </div>
+</div>
